@@ -1,9 +1,9 @@
 package models;
 
+import interfaces.Course;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Student {
     //attributes
@@ -12,9 +12,9 @@ public class Student {
     private String lastName;
     private int id;
     private boolean isFullTime;
-    private List<Double> grades = new ArrayList<>();
-    private double gpa;
+    private Set<Course> courses;
     private LocalDate enrollmentDate;
+    private Map<Course, Double> grades;
 
     //default constructor
     public Student() {
@@ -22,11 +22,13 @@ public class Student {
 
     //constructor with parameters
     public Student(String firstName, String lastName, boolean isFullTime) {
+        this.id = NEXT_ID++;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.id = NEXT_ID++;
         this.isFullTime = isFullTime;
         this.enrollmentDate = LocalDate.now();
+        this.courses = new HashSet<>();
+        this.grades = new HashMap<>();
     }
 
     //getters and setters
@@ -63,13 +65,6 @@ public class Student {
         isFullTime = fullTime;
     }
 
-    public double getGpa() {
-        return this.grades.stream()
-                .mapToDouble(Double::doubleValue)
-                .average()
-                .orElse(0.0);
-    }
-
     public LocalDate getEnrollmentDate() {
         return enrollmentDate;
     }
@@ -78,18 +73,37 @@ public class Student {
         this.enrollmentDate = enrollmentDate;
     }
 
-    public List<Double> getGrades() {
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+    public Map<Course, Double> getGrades() {
         return grades;
     }
 
-    public void addGrade(double grade) {
-        this.grades.add(grade);
+    public void addGrades(Course course, double grade) {
+        if (this.grades.containsKey(course)) {
+            this.grades.replace(course, grade);
+        }
+        this.grades.put(course, grade);
+    }
+
+    public double getGpa() {
+        return grades.values()
+                .stream()
+                .mapToDouble(Double::doubleValue)
+                .average()
+                .orElse(0.0);
     }
 
     @Override
     public String toString() {
         return "Student " + firstName + " " + lastName +
-                ", with ID: " + id+ ", GPA: " + getGpa() +
+                ", with ID: " + id + ", GPA: " + getGpa() +
                 ", is studying " + (isFullTime ? "full time" : "part time") +
                 " since " + enrollmentDate;
     }

@@ -1,4 +1,5 @@
-import models.Student;
+import interfaces.Course;
+import models.*;
 
 import java.util.Date;
 
@@ -9,13 +10,26 @@ public class Main {
 
         Student fullTimeStudent= new Student("Tudor", "Vadim", true);
         Student partTimeStudent= new Student("Andreea", "Balan", false);
+        Student student1= new Student("Vladimir", "Putin", false);
+        Student student2= new Student("Donald", "Trump", false);
+        Student student3= new Student("Sofia", "Vergara", true);
+        Student student4= new Student("Antonio", "Banderas", true);
 
         System.out.println(fullTimeStudent.toString());
         System.out.println(partTimeStudent.toString());
+        System.out.println(student1.toString());
+        System.out.println(student2.toString());
+        System.out.println(student3.toString());
+        System.out.println(student4.toString());
 
-        fullTimeStudent.addGrade(9.8);
-        fullTimeStudent.addGrade(7.7);
-        System.out.println(fullTimeStudent.getGrades());
-        System.out.println(fullTimeStudent.getGpa());
+        Course businessCourse = new BusinessCourse();
+        Course economyCourse = new EconomyCourse();
+        Course frenchCourse = new FrenchCourse();
+        Course literatureCourse = new LiteratureCourse();
+        Course mathCourse = new MathCourse();
+        Course statisticsCourse = new StatisticsCourse();
+
+        businessCourse.addStudent(fullTimeStudent);
+
     }
 }
