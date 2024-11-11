@@ -86,10 +86,11 @@ public class Student {
     }
 
     public void addGrades(Course course, double grade) {
-        if (this.grades.containsKey(course)) {
-            this.grades.replace(course, grade);
+        if(this.courses.contains(course)){
+            this.grades.put(course, grade);
+        }else{
+            System.out.println(firstName + " is not subscribed to this course.");
         }
-        this.grades.put(course, grade);
     }
 
     public double getGpa() {

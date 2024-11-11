@@ -2,6 +2,7 @@ import interfaces.Course;
 import models.*;
 
 import java.util.Date;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,6 +31,38 @@ public class Main {
         Course statisticsCourse = new StatisticsCourse();
 
         businessCourse.addStudent(fullTimeStudent);
+        economyCourse.addStudent(fullTimeStudent);
+        mathCourse.addStudent(fullTimeStudent);
+        statisticsCourse.addStudent(fullTimeStudent);
 
+        frenchCourse.addStudent(partTimeStudent);
+        literatureCourse.addStudent(partTimeStudent);
+
+        businessCourse.addStudent(student1);
+        economyCourse.addStudent(student1);
+        mathCourse.addStudent(student1);
+        statisticsCourse.addStudent(student1);
+
+        frenchCourse.addStudent(student2);
+        literatureCourse.addStudent(student2);
+
+        businessCourse.addStudent(student3);
+        economyCourse.addStudent(student3);
+        mathCourse.addStudent(student3);
+        statisticsCourse.addStudent(student3);
+
+        frenchCourse.addStudent(student4);
+        literatureCourse.addStudent(student4);
+
+        fullTimeStudent.addGrades(mathCourse,10.0);
+        fullTimeStudent.addGrades(businessCourse,8.9);
+        fullTimeStudent.addGrades(statisticsCourse, 6.7);
+        fullTimeStudent.addGrades(economyCourse, 5.6);
+        System.out.println(fullTimeStudent.getGpa());
+        System.out.println(fullTimeStudent.getCourses().stream().map(Course::getCourseName).toList());
+        fullTimeStudent.addGrades(statisticsCourse,9.0);
+        System.out.println(fullTimeStudent.getGpa());
+        fullTimeStudent.addGrades(literatureCourse,9.0);
+        System.out.println(fullTimeStudent.getGpa());
     }
 }
