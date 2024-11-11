@@ -1,3 +1,4 @@
+import exceptions.NotSubscribedToThisCourseException;
 import interfaces.Course;
 import models.*;
 
@@ -54,15 +55,20 @@ public class Main {
         frenchCourse.addStudent(student4);
         literatureCourse.addStudent(student4);
 
-        fullTimeStudent.addGrades(mathCourse,10.0);
-        fullTimeStudent.addGrades(businessCourse,8.9);
-        fullTimeStudent.addGrades(statisticsCourse, 6.7);
-        fullTimeStudent.addGrades(economyCourse, 5.6);
-        System.out.println(fullTimeStudent.getGpa());
-        System.out.println(fullTimeStudent.getCourses().stream().map(Course::getCourseName).toList());
-        fullTimeStudent.addGrades(statisticsCourse,9.0);
-        System.out.println(fullTimeStudent.getGpa());
-        fullTimeStudent.addGrades(literatureCourse,9.0);
-        System.out.println(fullTimeStudent.getGpa());
+        try {
+            fullTimeStudent.addGrades(mathCourse,10.0);
+            fullTimeStudent.addGrades(businessCourse,8.9);
+            fullTimeStudent.addGrades(statisticsCourse, 6.7);
+            fullTimeStudent.addGrades(economyCourse, 5.6);
+            System.out.println(fullTimeStudent.getGpa());
+            System.out.println(fullTimeStudent.getCourses().stream().map(Course::getCourseName).toList());
+            fullTimeStudent.addGrades(statisticsCourse,9.0);
+            System.out.println(fullTimeStudent.getGpa());
+            //fullTimeStudent.addGrades(literatureCourse,9.0);
+            //System.out.println(fullTimeStudent.getGpa());
+        } catch (NotSubscribedToThisCourseException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 package models;
 
+import exceptions.NotSubscribedToThisCourseException;
 import interfaces.Course;
 
 import java.time.LocalDate;
@@ -85,11 +86,11 @@ public class Student {
         return grades;
     }
 
-    public void addGrades(Course course, double grade) {
-        if(this.courses.contains(course)){
+    public void addGrades(Course course, double grade) throws NotSubscribedToThisCourseException {
+        if (this.courses.contains(course)) {
             this.grades.put(course, grade);
-        }else{
-            System.out.println(firstName + " is not subscribed to this course.");
+        } else {
+            throw new NotSubscribedToThisCourseException();
         }
     }
 
