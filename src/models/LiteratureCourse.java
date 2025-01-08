@@ -19,7 +19,6 @@ public class LiteratureCourse implements Course {
         return LITERATURE_COURSE_NAME;
     }
 
-    @Override
     public int getCredits() {
         return LITERATURE_COURSE_CREDITS;
     }
@@ -36,7 +35,6 @@ public class LiteratureCourse implements Course {
         this.students.remove(oldStudent);
     }
 
-    @Override
     public boolean isMandatory() {
         return LITERATURE_COURSE_CREDITS > 5 ? true : false;
     }

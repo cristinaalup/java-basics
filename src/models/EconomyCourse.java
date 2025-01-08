@@ -19,7 +19,6 @@ public class EconomyCourse implements Course {
         return ECONOMY_COURSE_NAME;
     }
 
-    @Override
     public int getCredits() {
         return ECONOMY_COURSE_CREDITS;
     }
@@ -36,7 +35,6 @@ public class EconomyCourse implements Course {
         this.students.remove(oldStudent);
     }
 
-    @Override
     public boolean isMandatory() {
         return ECONOMY_COURSE_CREDITS > 5 ? true : false;
     }

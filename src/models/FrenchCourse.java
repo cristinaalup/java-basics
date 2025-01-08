@@ -19,7 +19,6 @@ public class FrenchCourse implements Course {
         return FRENCH_COURSE_NAME;
     }
 
-    @Override
     public int getCredits() {
         return FRENCH_COURSE_CREDITS;
     }
@@ -36,7 +35,6 @@ public class FrenchCourse implements Course {
         this.students.remove(oldStudent);
     }
 
-    @Override
     public boolean isMandatory() {
         return FRENCH_COURSE_CREDITS > 5 ? true : false;
     }
