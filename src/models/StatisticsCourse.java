@@ -19,7 +19,6 @@ public class StatisticsCourse implements Course {
         return STATISTICS_COURSE_NAME;
     }
 
-    @Override
     public int getCredits() {
         return STATISTICS_COURSE_CREDITS;
     }
@@ -36,7 +35,6 @@ public class StatisticsCourse implements Course {
         this.students.remove(oldStudent);
     }
 
-    @Override
     public boolean isMandatory() {
         return STATISTICS_COURSE_CREDITS > 5 ? true : false;
     }

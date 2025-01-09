@@ -19,7 +19,6 @@ public class BusinessCourse implements Course {
         return BUSINESS_COURSE_NAME;
     }
 
-    @Override
     public int getCredits() {
         return BUSINESS_COURSE_CREDITS;
     }
@@ -36,7 +35,6 @@ public class BusinessCourse implements Course {
         this.students.remove(oldStudent);
     }
 
-    @Override
     public boolean isMandatory() {
         return BUSINESS_COURSE_CREDITS > 5 ? true : false;
     }

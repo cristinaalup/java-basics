@@ -19,7 +19,6 @@ public class MathCourse implements Course {
         return MATH_COURSE_NAME;
     }
 
-    @Override
     public int getCredits() {
         return MATH_COURSE_CREDITS;
     }
@@ -36,7 +35,6 @@ public class MathCourse implements Course {
         this.students.remove(oldStudent);
     }
 
-    @Override
     public boolean isMandatory() {
         return MATH_COURSE_CREDITS > 5 ? true : false;
     }
